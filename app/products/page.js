@@ -1,21 +1,25 @@
+// /app/products/page.js
 import Link from "next/link";
 
-export default function ProductsPage() {
-  const products = [];
+export const revalidate = 10; // revalidate every 10 sec
 
-  for (let i = 1; i <= 10; i++) {
-    products.push(
-      <li key={i}>
-        <Link href={`/products/${i}`}>Product {i}</Link>
-      </li>
-    );
-  }
+export default async function ProductsPage() {
+  const res = await fetch("https://dummyjson.com/products");
+  const data = await res.json();
 
   return (
     <div>
-      <h1>Products Page</h1>
+      <h1>Products List</h1>
 
-      <ul>{products}</ul>
+      <ul>
+        {data.products.map((p) => (
+          <li key={p.id} style={{ marginBottom: "10px" }}>
+            <Link href={`/products/${p.id}`}>
+              {p.title} — ₹{p.price}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

@@ -1,3 +1,6 @@
+// /app/layout.js
+import Link from "next/link";
+
 export const metadata = {
   title: "Product Store",
 };
@@ -6,24 +9,28 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body style={{ margin: 0, fontFamily: "Arial, sans-serif" }}>
-        {/* ---------- HEADER ---------- */}
+        {/* HEADER */}
         <header
           style={{
             background: "#1a1a1a",
             color: "white",
             padding: "18px",
-            textAlign: "center",
-            fontSize: "22px",
-            fontWeight: "600",
+            display: "flex",
+            justifyContent: "center",
+            gap: "40px",
+            fontSize: "20px",
           }}
         >
-          Product Store
+          <Link href="/" style={{ color: "white" }}>
+            Home
+          </Link>
+          <Link href="/products" style={{ color: "white" }}>
+            Products
+          </Link>
         </header>
 
-        {/* ---------- PAGE CONTENT (children) ---------- */}
         <main style={{ padding: "20px", minHeight: "70vh" }}>{children}</main>
 
-        {/* ---------- FOOTER ---------- */}
         <footer
           style={{
             background: "#f2f2f2",
