@@ -1,6 +1,6 @@
 // /app/products/[id]/page.js
 import Link from "next/link";
-
+import Image from "next/image";
 export const revalidate = 10;
 
 export default async function ProductDetails({ params }) {
@@ -29,6 +29,13 @@ export default async function ProductDetails({ params }) {
       <br />
       <br />
       <Link href="/products">← Back to Products</Link>
+      <Image
+        src="/batman.png"
+        alt="batman"
+        width={300}
+        height={300}
+        style={{ marginTop: "20px" }}
+      />
     </div>
   );
 }
