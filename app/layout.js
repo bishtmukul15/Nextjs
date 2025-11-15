@@ -1,5 +1,6 @@
 // /app/layout.js
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata = {
   title: "Product Store",
@@ -17,13 +18,23 @@ export default function RootLayout({ children }) {
             padding: "18px",
             display: "flex",
             justifyContent: "center",
+            alignItems: "center",
             gap: "40px",
             fontSize: "20px",
           }}
         >
+          <Image
+            src="/logo.png"
+            alt="logo"
+            width={28}
+            height={28}
+            style={{ borderRadius: "4px" }}
+          />
+
           <Link href="/" style={{ color: "white" }}>
             Home
           </Link>
+
           <Link href="/products" style={{ color: "white" }}>
             Products
           </Link>
